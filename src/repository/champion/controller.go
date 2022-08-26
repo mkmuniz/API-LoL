@@ -1,4 +1,4 @@
-package item
+package champion
 
 import (
 	"net/http"
@@ -6,8 +6,8 @@ import (
 	"github.com/lol-data/src/api"
 )
 
-func GetAllItems(w http.ResponseWriter, r *http.Request) {
-	api.GetItems()
+func GetFreeChampions(w http.ResponseWriter, r *http.Request) {
+	api.GetFreeChampions()
 }
 
 func GetItemByName(w http.ResponseWriter, r *http.Request) {

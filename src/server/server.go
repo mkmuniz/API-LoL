@@ -1,15 +1,16 @@
 package server
 
 import (
+	"log"
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/lol-data/src/repository/item"
+	"github.com/lol-data/configs"
+	"github.com/lol-data/src/middleware"
 )
 
 func Run() {
-	r := chi.NewRouter()
-	r.Get("/items", http.HandlerFunc(item.GetAllItems))
-	r.Get("/items/:name", http.HandlerFunc(item.GetItemByName))
-	http.ListenAndServe(":8080", r)
+	configs.Load()
+
+	log.Printf("API is running at port %v", configs.GetAPIConfig())
+	http.ListenAndServe(configs.GetAPIConfig(), middleware.Middlewares())
 }

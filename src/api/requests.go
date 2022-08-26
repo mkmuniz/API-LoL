@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/lol-data/configs"
 )
 
-func GetItems() {
-	url := "https://perodriguezl-league-of-legends-v1.p.rapidapi.com/lol/items?lang=en_US"
+func GetFreeChampions() {
+	configs.Load()
+	url := fmt.Sprintf("https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=" + configs.GetRiotAPIKey())
 
 	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("X-RapidAPI-Key", "86d88e9702msh84ebc415d46748bp196e77jsn45c9bcf71972")
-	req.Header.Add("X-RapidAPI-Host", "perodriguezl-league-of-legends-v1.p.rapidapi.com")
 
 	res, _ := http.DefaultClient.Do(req)
 
