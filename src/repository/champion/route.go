@@ -8,4 +8,5 @@ import (
 
 func Routes(r chi.Router) {
 	r.Get("/champions/free", http.HandlerFunc(GetFreeChampions))
+	r.Get("/summoner/{name}", http.HandlerFunc(GetSummonerByName))
 }
