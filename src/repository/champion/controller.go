@@ -1,6 +1,7 @@
 package champion
 
 import (
+	"io/ioutil"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -9,9 +10,11 @@ import (
 )
 
 func GetFreeChampions(w http.ResponseWriter, r *http.Request) {
-	res, err := api.GetFreeChampions()
+	res := api.GetFreeChampions()
 
-	httperror.RequestError(w, r, res, err)
+	body, err := ioutil.ReadAll(res.Body)
+
+	httperror.RequestError(w, r, body, err)
 }
 
 func GetSummonerByName(w http.ResponseWriter, r *http.Request) {
