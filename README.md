@@ -10,4 +10,16 @@ An api to return data about champions free, items and etc in League of Legends g
 
 2 - Open the repository and type `go mod tidy` to avoid errors
 
-3 - Create a file named `config.toml` and add the following env variables:  api port, host and key.
+3 - Create a file named `config.toml` and add the following env variables:
+
+```
+[api]
+key=""
+port=""
+```
+
+4 - Run with the following command `go run main.go`
+
+5 - Acess `localhost:PORT_DECLARED`
+
+6 - You can see the free champions in `/champions/free` route
